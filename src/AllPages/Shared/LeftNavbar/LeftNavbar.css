@@ -1,0 +1,13 @@
+.para:hover{
+    background-color: lightgray;
+   
+    color: black;
+}
+
+.catlink{
+    color: dimgray;
+}
+
+.catlink:hover{
+    color: #000;
+}
