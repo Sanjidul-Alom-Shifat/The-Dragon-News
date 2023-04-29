@@ -2,8 +2,9 @@ import React from 'react';
 import { Card, Image } from 'react-bootstrap';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { FaEye, FaRegBookmark, FaRegStar, FaShareAlt, FaStar  } from 'react-icons/fa';
-import Rating from 'react-rating';
+import { FaEye, FaRegBookmark, FaRegStar, FaShareAlt, FaStar } from 'react-icons/fa';
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 const NewsCards = ({ news }) => {
 
@@ -27,19 +28,17 @@ const NewsCards = ({ news }) => {
                     <Card.Img variant="top" src={image_url} />
                     <Card.Text>
                         {details.length < 250 ? <>{details}</> :
-                            <>{details.slice(0, 250)}...  <Link to={`/news/${_id}`} className='text-danger text-decoration-none fw-bold'>Read More</Link></>   
+                            <>{details.slice(0, 250)}...  <Link to={`/news/${_id}`} className='text-danger text-decoration-none fw-bold'>Read More</Link></>
                         }
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className="text-muted d-flex ">
-                    <div className='flex-grow-1 align-items-center'>
+                    <div className='flex-grow-1 d-flex align-items-center'>
                         <Rating
-                            placeholderRating={rating.number}
-                            readonly
-                            emptySymbol={<FaRegStar></FaRegStar>}
-                            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
-                            fullSymbol={<FaStar></FaStar>}
-                        ></Rating>
+                            style={{ maxWidth: 100 }}
+                            value={rating}
+                            readOnly
+                        />
                         <span> {rating?.number}</span>
                     </div>
                     <div>
