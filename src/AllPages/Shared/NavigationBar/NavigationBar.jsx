@@ -3,10 +3,23 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { FaUserCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const NavigationBar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, LogOut } = useContext(AuthContext);
+
+    const HandleLogOut = () => {
+        LogOut()
+            .then(() => {
+                // Sign-out successful.
+                toast.success('Log Out Successfully');
+            })
+            .catch((error) => {
+                // An error happened.
+                toast.error(error.message);
+            });
+    }
 
     return (
         <div>
@@ -26,7 +39,12 @@ const NavigationBar = () => {
 
                             {
                                 user ?
-                                    <Button variant='secondary'>Log Out</Button>
+                                    <Button
+                                        variant='secondary'
+                                        onClick={HandleLogOut}
+                                    >
+                                        Log Out
+                                    </Button>
                                     :
                                     <Link to='/login'>
                                         <Button variant='secondary'>Login</Button>
