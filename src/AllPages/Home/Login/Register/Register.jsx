@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { useState } from 'react';
+import UseTile from '../../../../Hooks/Usetitle';
 
 const Register = () => {
 
     const { CreateUser } = useContext(AuthContext);
 
     const [accepted, setAccepted] = useState(false);
+
+    UseTile('Register')
 
     const HandleRegister = (event) => {
         event.preventDefault();

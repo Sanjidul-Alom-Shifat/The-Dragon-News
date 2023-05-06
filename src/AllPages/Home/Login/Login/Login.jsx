@@ -3,12 +3,15 @@ import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import UseTile from '../../../../Hooks/Usetitle';
 
 const Login = () => {
 
     const { LoginUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+
+    UseTile('Login');
 
     const from = location.state?.from?.pathname || '/category/0';
 

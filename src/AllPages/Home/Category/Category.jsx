@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
 import NewsCards from '../NewsCards/NewsCards';
+import UseTile from '../../../Hooks/Usetitle';
 
 const Category = () => {
 
@@ -8,6 +9,8 @@ const Category = () => {
     // console.log(id);
     const CategoryNews = useLoaderData();
     // console.log(CategoryNews)
+
+    UseTile('Home');
 
     return (
         <div>
